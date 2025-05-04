@@ -1,0 +1,40 @@
+{
+  "kind": "collectionType",
+  "collectionName": "blogs",
+  "info": {
+    "singularName": "blog",
+    "pluralName": "blogs",
+    "displayName": "Blog"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "author": {
+      "type": "string",
+      "required": true
+    },
+    "content": {
+      "type": "blocks",
+      "required": true
+    },
+    "snippet": {
+      "type": "text",
+      "required": false
+    },
+    "category": {
+      "type": "enumeration",
+      "enum": [
+        "Travel",
+        "Science",
+        "Business",
+        "Law"
+      ]
+    }
+  }
+}
