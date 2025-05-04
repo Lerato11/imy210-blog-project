@@ -8,7 +8,20 @@
       <div v-else-if="error">Error loading blog posts.</div>
 
         <div class="space-y-6" v-else>
-          <div v-for="blog in blogs" :key="blog.documentId" class="mb-6">
+
+           <!--category filter -->
+          <div class="mb-6">
+            <label for="category" class="block text-sm font-medium text-gray-700 mb-2">Filter by Category</label>
+            <select v-model="selectedCategory" id="category" class="p-2 border border-gray-300 rounded">
+              <option value="">All</option>
+              <option value="Law">Law</option>
+              <option value="Science">Science</option>
+              <option value="Business">Business</option>
+              <option value="Travel">Travel</option>
+            </select>
+          </div>
+
+          <div v-for="blog in filteredBlogs" :key="blog.documentId" class="mb-6">
 
             <!-- <NuxtLink :to="`/blogs/${p.id}`">{{p.title}}</NuxtLink> -->
               <BlogPost :blogPost="{
@@ -36,7 +49,17 @@
 
   const blogs = computed(() => response.value?.data || []);
 
+  const selectedCategory = ref("");
 
+  const filteredBlogs = computed(() => {
+
+
+    if (!selectedCategory.value) {
+      return blogs.value;
+    }
+
+    return blogs.value.filter(blog => blog.category === selectedCategory.value);
+  });
 
 
 </script>
