@@ -1,0 +1,27 @@
+# Node modules and cache
+node_modules
+.cache
+.tmp
+
+# Build and output
+dist
+.nuxt
+.output
+
+# Logs
+*.log
+npm-debug.log
+
+# Environment files
+.env
+.env.*
+
+# Git and editor
+.git
+.gitignore
+.vscode
+.DS_Store
+
+# Docker files
+Dockerfile
+.dockerignore
